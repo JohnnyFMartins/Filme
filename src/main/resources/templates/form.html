@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Filmes - Form</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <form th:action="@{/filme/add}" th:object="${filme}" method="post" enctype="multipart/form-data">
+        <input type="hidden" th:field="*{id}">
+        <a href="/filme/">voltar</a>
+        <div class="container-form">
+            <h2 th:text="${filme.id != null} ? 'Editar Filme' : 'Criar novo Filme' "></h2>
+            <div class="input-nome-filme input-group">
+                <label>Nome do Filme</label>
+                <input th:fild="*{nome}" type="text" class="input" name="nome" id="nome" placeholder="Digite o nome..." />
+            </div>
+            <div class="input-ano-filme input-group">
+                <label>Ano do Filme</label>
+                <input th:field="*{data}" type="date" class="input" />
+            </div>
+            <div class="input-imagem-filme input-group">
+                <label>Imagem do Filme</label>
+                <input type="file" name="imagem" id="imagem" class="input" />
+            </div>
+
+            <div class="button-enviar">
+                <button th:text="${filme.id != null} ? 'Atualizar' : 'Cadastrar' " type="submit" class="enviar-form"></button>
+            </div>
+        </div>
+    </form>
+</body>
+</html>
